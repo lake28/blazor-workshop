@@ -1,0 +1,16 @@
+﻿@page "/myorders"
+@inject HttpClient HttpClient
+
+@code {
+    List<OrderWithStatus> orderWithStatus;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        orderWithStatus = await HttpClient.GetFromJsonAsync<List<OrderWithStatus>>("orders");
+    }
+}
+
+
+<div class="main">
+    My orders will go here
+</div>
